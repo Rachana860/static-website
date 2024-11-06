@@ -1,11 +1,18 @@
-# Use the official Nginx image from the Docker Hub
+# Use the official Nginx image from Docker Hub
 FROM nginx:alpine
 
-# Copy the content of the local 'static-website' directory to the Nginx default html folder
-COPY ./static-website /usr/share/nginx/html
+# Set the working directory
+WORKDIR /usr/share/nginx/html
 
-# Expose port 80 for the web server
+# Remove the default Nginx static content
+RUN rm -rf ./*
+
+# Copy your static website content to the container
+# Replace './static-website' with the actual path to your local website directory
+COPY ./static-website /usr/share/nginx/html/
+
+# Expose port 80 so the container can be accessed via HTTP
 EXPOSE 80
 
-# Command to run the Nginx server
+# Start Nginx in the foreground (this is necessary for Docker containers to run)
 CMD ["nginx", "-g", "daemon off;"]
