@@ -2,7 +2,7 @@
 sudo apt-get update -y
 sudo apt-get install apache2 -y
 # Destination directory
-sudo git clone https://github.com/shreee18shaila2000/static-website.git
+sudo git clone https://github.com/Rachana860/static-website.git
 sudo mkdir /var/www/html/staticweb
 sudo cp -rf static-website/* /var/www/html/staticweb/.
 DEST_DIR="/var/www/html/staticweb"
