@@ -9,7 +9,7 @@ RUN rm -rf ./*
 
 # Copy your static website content to the container
 # Replace './static' with the actual path to your local website directory
-COPY ./static-website /usr/share/nginx/html/
+COPY ./static /usr/share/nginx/html/
 
 # Expose port 80 so the container can be accessed via HTTP
 EXPOSE 80
