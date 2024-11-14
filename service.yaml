@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: static-website-service
+spec:
+  selector:
+    app: static-website  # This matches the label from the Deployment
+  ports:
+    - protocol: TCP
+      port: 80       # Port exposed by the Service
+      targetPort: 80 # Port exposed by the container
+  type: LoadBalancer  # If you are using a cloud provider that supports load balancers (like GCP, AWS, Azure)
