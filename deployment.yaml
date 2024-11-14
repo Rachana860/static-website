@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: static-website-deployment
+spec:
+  replicas: 3  # You can change this to the number of replicas you need
+  selector:
+    matchLabels:
+      app: static-website
+  template:
+    metadata:
+      labels:
+        app: static-website
+    spec:
+      containers:
+        - name: nginx
+          image: nginx:alpine  # You may want to replace this with your own image if you're building locally
+          ports:
+            - containerPort: 80
+          volumeMounts:
+            - name: static-website-content
+              mountPath: /usr/share/nginx/html
+      volumes:
+        - name: static-website-content
+          gitRepo:
+            repository: "https://github.com/Rachana860/static-website.git"
+            revision: master
+            directory: "/"
