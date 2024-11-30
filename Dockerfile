@@ -1,20 +1,23 @@
-# Use the official Nginx image from Docker Hub
 FROM nginx:alpine
 
-# Install Git to clone the repository
+# Increase HTTP buffer size for large repositories
+RUN git config --global http.postBuffer 524288000
+
+# Install Git
 RUN apk update && apk add --no-cache git
 
-# Set the working directory for Nginx
+# Set working directory
 WORKDIR /usr/share/nginx/html
 
-# Remove the default Nginx static content
+# Clean up any existing files in the directory
 RUN rm -rf ./*
 
-# Clone the GitHub repository containing the static website content
+# Clone the repository with a stable buffer and retry
 RUN git clone https://github.com/Rachana860/static-website.git .
 
-# Expose port 80 so the container can be accessed via HTTP
+# Expose port 80 (default for nginx)
 EXPOSE 80
 
-# Start Nginx in the foreground (this is necessary for Docker containers to run)
+# Command to start nginx
 CMD ["nginx", "-g", "daemon off;"]
+
