@@ -10,3 +10,44 @@ spec:
       port: 80       # Port exposed by the Service
       targetPort: 80 # Port exposed by the container
   type: LoadBalancer  # If you are using a cloud provider that supports load balancers (like GCP, AWS, Azure)
+  c
+sudo chmod lab.pem
+sudo ssh -i lab.pem ubuntu@public ip
+sudo apt-get update
+insall apache2 libapache2-mod-php php php-mysql mysql-server client
+status apache2
+browse public ip
+
+clone dyna
+sudo mkdir /var/www/html/dw
+cd dy
+sudo cp -rf mompop/* /var/www/html/dw
+sud onano /etc/apache2/sitac/000
+restart apache2
+browse pub ip
+
+sql conn
+ssh to instance
+sudo mysql -u root -p
+create user 'msis'@'localhost' indentified with myaql_native_passworrd by 'rac860'
+alter user
+grant all previliges on mom_pop_dv.* to 'msis'@"lh' with grant option;
+exit
+cd .sql file path
+-u root -p
+use mompopdb
+sourrce createdb.sql;
+show tables;
+select* from table name;
+exit
+
+cd var/www/html/dw
+sudo nsmo getaptpara
+url lh
+name mompopdb
+user msis
+pass rac860
+
+bind add
+sudo nano /etc/mysql/mysql.conf.d/msql.cnf
+ba o.o.o.o
